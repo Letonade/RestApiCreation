@@ -1,6 +1,7 @@
 // @letonade Write the main test of this kata..
 // @letonade I took those test from another kata and completed a few things
-const RestController = require('../../../src/adapters/ui/RestController')
+const RestController = require('../../../src/adapters/ui/RestController');
+const RestUseCase = require('../../../src/core/usecases/RestUseCase');
 const assert = require('assert');
 
 describe('Example Test Cases', function() {
@@ -23,7 +24,8 @@ describe('Example Test Cases', function() {
   ];
 
   let request, response;
-  const controller = new RestController(dataSample);
+  const restUseCase = new RestUseCase(dataSample);
+  const controller = new RestController(restUseCase);
 
   it("GET Requests", function() {
     request = {
@@ -599,5 +601,3 @@ describe('Random Edge Cases', function() {
     }
   });
 });
-
-
