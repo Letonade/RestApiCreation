@@ -1,6 +1,6 @@
 ## Description:
-#### # (Originally the kata needed a TestController (I renamed it RestController))
-#### # I'm using Jest for the test with a classic `npx jest`
+#### # @Letonade (Originally the kata needed a TestController (I renamed it RestController))
+#### # @Letonade I'm using Jest for the test with a classic `npx jest`
 In this kata you are going to mimic the behaviour of a backend framework by creating a RestController class.
 
 The class can be constructed in any way you like as long as it meets the following criteria:
