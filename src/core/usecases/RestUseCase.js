@@ -1,4 +1,4 @@
-const Rest = require('../entities/RestDataSample');
+const RestRequest = require('../entities/RestRequest');
 const RestRepository = require('../ports/RestRepository');
 
 const SUCCESS = 200, POST_SUCCESS = 201, PUT_SUCCESS = 202, BAD_REQUEST = 400;

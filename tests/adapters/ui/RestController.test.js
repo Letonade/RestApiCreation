@@ -2,10 +2,12 @@
 // @letonade I took those test from another kata and completed a few things
 const RestController = require('../../../src/adapters/ui/RestController');
 const RestUseCase = require('../../../src/core/usecases/RestUseCase');
+const RestRequest = require('../../../src/core/entities/RestRequest');
+const RestPayload = require('../../../src/core/entities/RestPayload');
 const assert = require('assert');
 
 describe('Example Test Cases', function() {
-  const dataSample = [
+  const dataSamples = [
     {
       id: 1,
       name: "Ada",
@@ -24,7 +26,7 @@ describe('Example Test Cases', function() {
   ];
 
   let request, response;
-  const restUseCase = new RestUseCase(dataSample);
+  const restUseCase = new RestUseCase(dataSamples);
   const controller = new RestController(restUseCase);
 
   it("GET Requests", function() {
@@ -171,7 +173,7 @@ describe('Example Test Cases', function() {
 });
 
 describe('Example Edge Cases', function() {
-  const dataSample = [
+  const dataSamples = [
     {
       id: 1,
       name: "Ada",
@@ -179,7 +181,8 @@ describe('Example Edge Cases', function() {
     }
   ];
 
-  const controller = new RestController(dataSample);
+  const restUseCase = new RestUseCase(dataSamples);
+  const controller = new RestController(restUseCase);
   let request, response;
 
   it("POST Requests", function() {
@@ -258,8 +261,8 @@ describe('Example Edge Cases', function() {
 });
 
 class Solution {
-  constructor(dataSample) {
-    this.data = dataSample;
+  constructor(dataSamples) {
+    this.data = dataSamples;
   }
 
   dispatch(obj) {
@@ -412,18 +415,20 @@ describe('Random Test Cases', function() {
     }
   ];
 
-  let dataSample = [], aux = [], request, resController, resSolution;
+  let dataSamples = [], aux = [], request, resController, resSolution;
   for (let i = 0; i < 3; i++) {
     let randomIndex = 0;
     do {
       randomIndex = Math.floor(Math.random() * 10);
     } while (aux.includes(randomIndex));
     aux.push(randomIndex);
-    dataSample.push({ ...persons[randomIndex] });
+    dataSamples.push({ ...persons[randomIndex] });
   }
 
-  const controller = new RestController([...dataSample]);
-  const solution = new Solution([...dataSample]);
+
+  const restUseCase = new RestUseCase([...dataSamples]);
+  const controller = new RestController(restUseCase);
+  const solution = new Solution([...dataSamples]);
   it("GET Requests", function() {
     request = {
       payload: {},
@@ -546,7 +551,7 @@ describe('Random Edge Cases', function() {
     }
   ];
 
-  let dataSample = [
+  let dataSamples = [
     {
       id: 0,
       name: "Michael",
@@ -555,8 +560,9 @@ describe('Random Edge Cases', function() {
   ];
 
   let request, resController, resSolution;
-  const controller = new RestController([...dataSample]);
-  const solution = new Solution([...dataSample]);
+  const restUseCase = new RestUseCase([...dataSamples]);
+  const controller = new RestController(restUseCase);
+  const solution = new Solution([...dataSamples]);
 
   it("GET Requests", function() {
     request = {

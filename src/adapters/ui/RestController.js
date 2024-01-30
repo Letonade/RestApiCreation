@@ -8,6 +8,7 @@ class RestController  {
 // @letonade I like to use happy path, if you want to know why, come here => https://maelvls.dev/go-happy-line-of-sight/
     constructor(restUseCase) {
         this.restUseCase = restUseCase;
+        console.log(this.restUseCase)
     }
 
     dispatch(request) {
